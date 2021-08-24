@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %} - CROSAM</title>
+<link rel="stylesheet" href="{{ url_for("static", filename = "css/style.css") }}">
+
+
+<nav>
+    <h1>CROSAM LIMITADA</h1>
+    <ul>
+        {% if g.user %}
+            <li>
+                <span> {{ g.user['username'] }}</span>
+            </li>
+            <li>
+                <span>
+                    <a href="{{url_for('auth.logout') }}">Cerrar Sesión</a>
+                </span>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ url_for('auth.register' )}}">Registrarse</a>
+            </li>
+            <li>
+                <a href="{{ url_for('auth.login' )}}">Iniciar Sesión</a>
+            </li>
+            
+        {% endif %}
+    </ul>
+</nav>
+
+<section class="content">
+    
+    <header>
+        {% block header %}Menus{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor%}
+    {% block content%} {% endblock %}
+</section>
+

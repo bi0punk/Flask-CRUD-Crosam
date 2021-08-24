@@ -1,0 +1,95 @@
+<link href="/static/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+
+    
+<form method="post" class="container-fluid">
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Fecha Siembra</label>
+            <input type="date" class="form-control" value="{{siembra.fechaSiembra}}" name="fechaSiembra" id="fechaSiembra">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Nro.Guía</label>
+            <input type="text" class="form-control" value="{{siembra.nroGuia}}" name="nroGuia" id="nroGuia">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <select class="form-control" name="origen" class="select-form" required> 
+                <option value="" selected hidden >Origen</option>
+                {% for origen in origenes %}
+                    <option value="{{ origen['idOrigen'] }}">{{ origen.nombreOrigen }} </option>    
+                {% endfor %}
+            </select>   
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Recepción</label>
+            <input type="text" name="recepcion" id="recepcion" class="form-control" value="{{siembra.recepcion}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Valor Unidad</label>
+            <input type="text" name="valorUnidad" id="valorUnidad" class="form-control" value="{{siembra.valorUnidad}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Gasto en Semilla</label>
+            <input type="text" name="gastoSemilla" id="gastoSemilla" class="form-control" value="{{siembra.gastoSemilla}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Gasto en Flete</label>
+            <input type="text" name="gastoFlete" id="gastoFlete" class="form-control" value="{{siembra.gastoFlete}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <select class="form-control" name="sf" class="select-form" required> 
+                <option value="" selected hidden >Servicio Flete</option>
+                {% for servicioF in sf %}
+                    <option value="{{ servicioF['idServicioFlete'] }}">{{ servicioF.nombreServicioFlete }} </option>    
+                {% endfor %}
+            </select> 
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Total</label>
+            <input type="text" name="total" id="total" class="form-control" value="{{siembra.total}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Gasto en Servicio</label>
+            <input type="text" name="gastoServicio" id="gastoServicio" class="form-control" value="{{siembra.gastoServicio}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <select class="form-control " name="sembradora" class="select-form" required> 
+                <option value="" selected hidden >Sembradora</option>
+                {% for sembradora in sembradoras %}
+                    <option value="{{ sembradora['idSembradora'] }}">{{ sembradora.nombreSembradora }} </option>    
+                {% endfor %}
+            </select> 
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-1">
+            <a href="{{url_for('siembra.index')}}">Volver</a>
+        </div>
+        <div class="col-sm-2">
+            <input type="submit" value="Guardar">
+        </div>
+    </div>
+
+</form>
+
+
+

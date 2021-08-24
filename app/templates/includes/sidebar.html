@@ -1,0 +1,42 @@
+
+    <div class="sidebar">
+      <div class="sidebar-wrapper">
+        {% if g.user %}
+        <div class="logo">
+          <a class="simple-text logo-normal usuario"> {{ g.user['username'] }}</a>
+        </div>
+        {% endif %}
+
+        <ul class="nav">
+          <li>
+            <a href="/">
+              <i class="tim-icons icon-chart-pie-36"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li >
+            <a href="{{ url_for('siembra.index') }}">
+              <i class="tim-icons icon-atom"></i>
+              <p>Siembra</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('colgado.index') }}">
+              <i class="tim-icons icon-pin"></i>
+              <p>Colgado</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('cosecha.index') }}">
+              <i class="tim-icons icon-bell-55"></i>
+              <p>Cosecha</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{url_for('auth.logout') }}"><i class="tim-icons icon-button-power"></i>
+              <p>Cerrar Sesión</p>
+          </li>
+        </ul>
+        
+      </div>
+    </div>

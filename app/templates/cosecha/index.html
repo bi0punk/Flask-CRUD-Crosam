@@ -1,0 +1,125 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Colgado {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}<link href="/static/assets/css/style.css" rel="stylesheet" />{% endblock stylesheets %}
+
+{% block content %}
+
+    <h1>Modulo Cosecha</h1>
+    
+    <form method="post">
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col-md-2">
+                    <input type="date" class="form-control" placeholder="Fecha Cosecha" name="fechaCosecha" id="fechaCosecha" required>
+                </div>
+                <div class="col-2">
+                    <input type="text" class="form-control" placeholder="Código de Centro" name="codigoCentro" id="codigoCentro" required>
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="Nro Guía" name="nroGuia" id="nroGuia" required>
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="Folio" name="folio" id="folio" required>
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="Linea (Guía)" name="linea_guia" id="linea_guia" required>
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="Camada" name="camada" id="camada" required>
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="Nro Cuelga" name="nroCuelga" id="nroCuelga" required>
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="Metro Red" name="metroRed" id="metroRed" required>
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="MaxiSaco" name="maxiSaco" id="maxiSaco" required>
+                </div>
+                <div class="col-2">
+                    <input type="text" class="form-control" placeholder="Kgos Coeschado" name="kgsCosechado" id="kgsCosechado" required>
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="Condición" name="condicion" id="condicion" required>
+                </div>
+                <select class="form-control col-2" name="sembradora" class="select-form" required> 
+                    <option selected hidden >Servicio</option>
+                    {% for sembradora in sembradoras %}
+                        <option value="{{ sembradora.idSembradora }}">{{ sembradora.nombreSembradora }} </option>    
+                    {% endfor %}
+                </select>
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="Patente" name="patente" id="patente" required>
+                </div>
+                <select class="form-control col-2" name="destino" class="select-form" required> 
+                
+                    <option selected hidden >Destino</option>
+                    {% for destino in destinos %}
+                        <option value="{{ destino.idDestino }}">{{ destino.nombreDestino }} </option>    
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn  btn-guardar-cosecha">Guardar</button> 
+            </div>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger" role="alert">{{ message }}</div>
+        {% endfor %}    
+        </div>
+      </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha Cosecha</th>
+                <th>Codigo Centro</th>
+                <th>Nro Guía</th>
+                <th>Folio</th>
+                <th>Linea (Guía)</th>
+                <th>Camada</th>
+                <th>Nro Cuelga</th>
+                <th>Metro Red</th>
+                <th>MaxiSaco</th>
+                <th>Kgs Cosechado</th>
+                <th>Condición</th>
+                <th>Servicio</th>
+                <th>Patente</th>
+                <th>Destino</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cosecha in cosechas %}
+            <tr>
+                <td>{{ cosecha.fechaCosecha.strftime('%d-%m-%Y') }}</td>
+                <td>{{ cosecha.codigoCentro }}</td>
+                <td>{{ cosecha.nroGuia }}</td>
+                <td>{{ cosecha.folio }}</td>
+                <td>{{ cosecha.linea_guia }}</td>
+                <td>{{ cosecha.camada }}</td>
+                <td>{{ cosecha.nroCuelga }}</td>
+                <td>{{ cosecha.metroRed }}</td>
+                <td>{{ cosecha.maxiSaco }}</td>
+                <td>{{ cosecha.kgsCosechado }}</td>
+                <td>{{ cosecha.condicion}}</td>
+                <td>{{ cosecha.nombreSembradora }}</td>
+                <td>{{ cosecha.patente }}</td>
+                <td>{{ cosecha.nombreDestino }}</td>
+                <td class="btn-colgado" style="border-top: 0px;">
+                        <a href="{{ url_for('cosecha.update', id=cosecha['idCosecha'])}}" class="action">Editar</a>
+                </td>
+                <td class="btn-colgado" style="border-top: 0px;">
+                    <a href="{{url_for('cosecha.delete', id = cosecha['idCosecha'])}}" class="text-danger">Eliminar</a>
+            </td>
+            </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}

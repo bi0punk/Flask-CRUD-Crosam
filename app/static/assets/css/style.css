@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+label{
+    color: #fff;
+}
+section{
+    height: 100vh;
+    width: 100%;
+    
+}
+.form-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 380px;
+    padding: 50px 30px;
+    border-radius: 10px;
+    box-shadow:7px 7px 60px #000;
+}
+h1{
+    color: #000000;
+}
+h2{
+    color: #c0b7fc;
+    font-size: 1.9em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.control input{
+    padding: 10px;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    color:#000;
+    background: #ddd;
+    outline: none;
+    border: none;
+    margin: 1em 0;
+
+}         
+.control .btn{
+    color: #fff;
+    text-transform: uppercase;
+    background: rgb(53, 73, 252);
+    opacity: .7;
+    transition:opacity .3s ease;
+    margin-top: 44px;
+}
+.btn:focus{
+    opacity: 1;
+}
+/* p{
+    text-align: center;
+} */
+video{
+    position: fixed;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    
+}
+.btn-colgado a{
+    padding: 10px;
+    color: #0004dc;
+}
+.form-group{
+    padding-bottom: 30px;
+}
+.btn-registro {
+    margin-top: -3px;
+    margin-left: 20px;
+}
+.alert {
+    margin-right: 300px;
+}
+.colum-md-2 input{
+    margin-bottom: 10px;
+}
+.tarjeta{
+    background: #fff;
+}
+.btn-siembra{
+    background: blue;
+}
+.btn-guardar-colgado{
+    background: blue;
+    margin-top: 0px;
+    margin-bottom: 13px;
+    margin-left: 10px;
+}
+.btn-guardar-cosecha{
+    background: blue;
+    margin-top: 0px;
+    margin-bottom: 13px;
+    margin-left: 10px;
+}
+.logo a{
+    text-align: center;
+}
+.card-graf{
+    background: #fff;
+    box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.6);
+}
+.card-graf3{
+    margin-top: 50px;
+}
+.alerta-login{
+    color:#ffb0b0;
+  
+}

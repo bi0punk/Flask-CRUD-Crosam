@@ -1,0 +1,81 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Colgado {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<link href="/static/assets/css/style.css" rel="stylesheet" />
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <h1>Modulo Colgado</h1>
+
+        <form method="post">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-1">
+                        <input type="text" class="form-control" placeholder="Linea" name="linea" id="linea" required>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" placeholder="Sistema" name="sistema" id="sistema" required>
+                    </div>
+                    <div class="col-1">
+                        <input type="text" class="form-control" placeholder="Cuelgas" name="cuelgas" id="cuelgas" required>
+                    </div>
+                    <div class="col-2">
+                        <input type="date" class="form-control" placeholder="Fecha" name="fechaColgado" id="fechaColgado" required>
+                    </div>
+                    <select class="form-control col-2" name="origen" class="select-form" required> 
+                    
+                        <option value="" selected hidden >Origen</option>
+                        {% for origen in origenes %}
+                            <option value="{{ origen.idOrigen }}">{{ origen.nombreOrigen }} </option>    
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-guardar-colgado">Guardar</button> 
+                </div>
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% endfor %}    
+            </div>
+          </form>
+        
+   
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Linea</th>
+                <th>Sistema</th>
+                <th>Cuelgas</th>
+                <th>Fecha de Colgado</th>
+                <th>Origen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for colgado in colgados %}
+               <tr>
+                   <td>{{ colgado.linea }}</td>
+                   <td> {{ colgado.sistema }}</td>
+                   <td>{{ colgado.cuelgas }}</td>
+                   <td>{{ colgado.fechaColgado.strftime('%d-%m-%Y') }}</td>
+                   <td>{{ colgado.nombreOrigen }}</td>
+                   <td class="btn-colgado" style="border-top: 0px;">
+                        <a href="{{ url_for('colgado.update', id=colgado['idColgado'])}}" class="action">Editar</a>
+                   </td>
+                   <td class="btn-colgado" style="border-top: 0px;">
+                    <a href="{{url_for('colgado.delete', id = colgado['idColgado'])}}" class="text-danger">Eliminar</a>
+               </td>
+               </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}

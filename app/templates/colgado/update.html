@@ -1,0 +1,50 @@
+
+<link href="/static/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+
+<form method="post" class="container-fluid">
+    
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Linea</label>
+            <input type="text" class="form-control" value="{{ colgado.linea }}" name="linea" id="linea">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Sistema</label>
+            <input type="text" class="form-control" value="{{ colgado.sistema }}" name="sistema" id="sistema">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Cuelga</label>
+            <input type="text" class="form-control" value="{{ colgado.cuelgas }}" name="cuelgas" id="cuelgas">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label >Fecha de Colgado</label>
+            <input type="date" class="form-control" value="{{colgado.fechaColgado}}" name="fechaColgado" id="fechaColgado">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <select class="form-control " name="origen" class="select-form" required> 
+                <option value="" selected hidden >Origen</option>
+                {% for origen in origenes %}
+                    <option value="{{ origen['idOrigen'] }}">{{ origen.nombreOrigen }} </option>    
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-1">
+            <a href="{{url_for('colgado.index')}}">Volver</a>
+        </div>
+        <div class="col-sm-2">
+            <input type="submit" value="Guardar">
+        </div>
+    </div>
+
+    
+</form>

@@ -1,0 +1,106 @@
+<link href="/static/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+
+
+<form method="post" class="container-fluid">
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Fecha Cosecha</label>
+            <input type="date" class="form-control" value="{{cosecha.fechaCosecha}}" name="fechaCosecha" id="fechaCosecha">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Codigo de Centro</label>
+            <input type="text" class="form-control" value="{{cosecha.codigoCentro}}" name="codigoCentro" id="codigoCentro">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Numero de Guía</label>
+            <input type="text" class="form-control" name="nroGuia" id="nroGuia" value="{{cosecha.nroGuia}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label >Folio</label>
+            <input type="text" class="form-control" name="folio" id="folio"  value="{{cosecha.folio}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Linea (Guía)</label>
+            <input type="text" class="form-control" name="linea_guia" id="linea_guia" value="{{cosecha.linea_guia}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Camada</label>
+            <input type="text" class="form-control" name="camada" id="camada" value="{{cosecha.camada}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Nro Cuelga</label>
+            <input type="text" class="form-control" name="nroCuelga" id="nroCuelga" value="{{cosecha.nroCuelga}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="Metro Red">Metro Red</label>
+            <input type="text" class="form-control" name="metroRed" id="metroRed" value="{{cosecha.metroRed}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">MaxiSaco</label>
+            <input type="text" class="form-control" name="maxiSaco" id="maxiSaco" value="{{cosecha.maxiSaco}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Kgs. Cosechado</label>
+            <input type="text" class="form-control" name="kgsCosechado" id="kgsCosechado" value="{{cosecha.kgsCosechado}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Condicion</label>
+            <input type="text" class="form-control" name="condicion" id="condicion" value="{{cosecha.condicion}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <select class="form-control" name="sembradora" class="select-form" required> 
+                <option value="" selected hidden >Servicio</option>
+                {% for sembradora in sembradoras %}
+                    <option value="{{ sembradora['idSembradora'] }}">{{ sembradora.nombreSembradora }} </option>    
+                {% endfor %}
+            </select> 
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for="fecha">Patente</label>
+            <input type="text" class="form-control" name="patente" id="patente" value="{{cosecha.patente}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <select class="form-control" name="destino" class="select-form" required> 
+                <option value="" selected hidden >Destino</option>
+                {% for destino in destinos %}
+                    <option value="{{ destino['idDestino'] }}">{{ destino.nombreDestino }} </option>    
+                {% endfor %}
+            </select> 
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-1">
+            <a href="{{url_for('cosecha.index')}}">Volver</a>
+        </div>
+        <div class="col-sm-2">
+            <input type="submit" value="Guardar">
+        </div>
+    </div>
+
+</form>

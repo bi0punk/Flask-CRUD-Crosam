@@ -1,0 +1,122 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Siembra {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<link href="/static/assets/css/style.css" rel="stylesheet" />
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <h1>Modulo Siembra</h1>
+
+        <form method="post">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-2">
+                        <input type="date" class="form-control" name="fechaSiembra" id="fechaSiembra" required>
+                    </div>
+                    <div class="col-1">
+                        <input type="text" class="form-control" placeholder="Nro Guia" name="nroGuia" id="nroGuia" required>
+                    </div>
+                    <select class="form-control col-1" name="origen" class="select-form" required> 
+                        <option value="" selected hidden >Origen</option>
+                        {% for origen in origenes %}
+                            <option value="{{ origen.idOrigen }}">{{ origen.nombreOrigen }} </option>    
+                        {% endfor %}
+                    </select>
+                    <div class="col-2">
+                        <input type="text" class="form-control" placeholder="Recepción" name="recepcion" id="recepcion" required>
+                    </div>
+                    <div class="col-1">
+                        <input type="text" class="form-control" placeholder="Valor Unidad" name="valorUnidad" id="valorUnidad" required>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" placeholder="Gasto de Semilla" name="gastoSemilla" id="gastoSemilla" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-2">
+                        <input type="text" class="form-control" placeholder="Gasto en Flete" name="gastoFlete" id="gastoFlete" required>
+                    </div>
+                    
+                        <select class="form-control col-2" name="servicioFlete" class="select-form" required> 
+                            <option  selected hidden >Servicio de Flete</option>
+                            {% for servicioFlete in serviciosFletes %}
+                                <option value="{{ servicioFlete.idServicioFlete }}">{{ servicioFlete.nombreServicioFlete }} </option>    
+                            {% endfor %}
+                        </select>
+                    
+                    <div class="col-2">
+                        <input type="text" class="form-control" placeholder="Total" name="total" id="total">
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" placeholder="Gasto en Servicio" name="gastoServicio" id="gastoServicio" required>
+                    </div>
+                    <select class="form-control col-2" name="sembradora" class="select-form" required> 
+                        <option selected hidden >Sembradora</option>
+                        {% for sembradora in sembradoras %}
+                            <option value="{{ sembradora.idSembradora }}">{{ sembradora.nombreSembradora }} </option>    
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn  btn-siembra">Guardar</button> 
+                
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% endfor %}    
+            </div>
+          </form>
+        
+   
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha de Siembra</th>
+                <th>Nro Guia</th>
+                <th>Origen</th>
+                <th>Recepcion</th>
+                <th>Valor Unidad</th>
+                <th>Gasto en Semilla</th>
+                <th>Gasto en Flete</th>
+                <th>Servicio Flete</th>
+                <th>Total</th>
+                <th>Gasto en Servicio</th>
+                <th>Sembradora</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for siembra in siembras %}
+               <tr>
+                   <td>{{ siembra.fechaSiembra.strftime('%d-%m-%Y') }}</td>
+                   <td> {{ siembra.nroGuia }}</td>
+                   <td>{{ siembra.nombreOrigen }}</td>
+                   <td>{{ siembra.recepcion }}</td>
+                   <td>{{ siembra.valorUnidad }}</td>
+                   <td>{{ siembra.gastoSemilla }}</td>
+                   <td> {{ siembra.gastoFlete }}</td>
+                   <td>{{ siembra.nombreServicioFlete }}</td>
+                   <td>{{ siembra.total }}</td>
+                   <td>{{ siembra.gastoServicio }}</td>
+                   <td>{{ siembra.nombreSembradora }}</td>
+                   
+                   <td class="btn-colgado" style="border-top: 0px;">
+                        <a href="{{ url_for('siembra.update', id=siembra['idSiembra'])}}" class="action">Editar</a>
+                   </td>
+                   <td class="btn-colgado" style="border-top: 0px;">
+                    <a href="{{url_for('siembra.delete', id = siembra['idSiembra'])}}" class="text-danger" oneclick="return confirm('Estas seguro de eliminarlo?')">Eliminar</a>
+               </td>
+               </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}

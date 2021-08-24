@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <link href="/static/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+<body>
+    {% if g.user %}
+            <li>
+                <span> {{ g.user['username'] }}</span>
+            </li>
+            <li>
+                <span>
+                    <a href="{{url_for('auth.logout') }}">Cerrar Sesión</a>
+                </span>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ url_for('auth.register' )}}">Registrarse</a>
+            </li>
+            <li>
+                <a href="{{ url_for('auth.login' )}}">Iniciar Sesión</a>
+            </li>
+            
+        {% endif %}
+    <h1>Registro</h1>
+
+    <form method="post">
+
+        <label for="username">Usuario</label>
+        <input type="text" name="username" id="username" placeholder="Ingrese un Usuario" required>
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" placeholder="Ingrese Contrseña" required>
+
+        <label for="cars">Seleccione un Cargo:</label>
+        <select name="position" class="select-form" required> 
+            <option value="" selected hidden >Cargo</option>
+            {% for rol in roles %}
+                <option value="{{ rol['id'] }}">{{rol['rol_name']}} </option>    
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Registrarse">
+    </form>
+
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor%}
+    {% block content%} {% endblock %}
+</body>
+</html>
+
+    
