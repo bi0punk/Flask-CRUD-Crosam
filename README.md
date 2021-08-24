@@ -1,5 +1,8 @@
 # ProyectoCrosam
 
+Proyecto crud desarollado en python, utilizando flask como framework y mysql para bd's.
+
+
 ### Instalación App:
 * Clonar github
 ~~~
