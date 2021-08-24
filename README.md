@@ -3,7 +3,7 @@
 ### Instalación App:
 * Clonar github
 ~~~
-github clone https://github.com/crisnta/ProyectoCrosam.git
+github clone https://github.com/bi0punk/Flask-CRUD-Crosam.git
 ~~~
 
 ### Crear Entorno Virtual
@@ -74,20 +74,3 @@ Una vez creada la base de datos (ejemplo: proyecto_crosam), conectarse a la base
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-## Proyecto Crosam
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=crisnta&repo=WebApp-Crosam)](https://github.com/crisnta/WebApp-Crosam)
-
-## Lenguajes utilizados
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=crisnta)](https://github.com/anuraghazra/WebApp-Crosam)
